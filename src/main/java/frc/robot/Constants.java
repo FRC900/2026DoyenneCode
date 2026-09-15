@@ -1,0 +1,96 @@
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
+package frc.robot;
+
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.MotorOutputConfigs;
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
+/**
+ * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
+ * constants. This class should not be used for any other purpose. All constants should be declared
+ * globally (i.e. public static). Do not put anything functional in this class.
+ *
+ * <p>It is advised to statically import this class (or one of its inner classes) wherever the
+ * constants are needed, to reduce verbosity.
+ */
+public final class Constants {
+      public static final TalonFXConfiguration commonConfig = new TalonFXConfiguration()
+                                                                  .withCurrentLimits(
+                                                                    new CurrentLimitsConfigs()
+                                                                      .withStatorCurrentLimit(120)
+                                                                      .withSupplyCurrentLimit(60)
+                                                                      .withStatorCurrentLimitEnable(true)
+                                                                      .withSupplyCurrentLimitEnable(true)
+                                                                  )
+                                                                  .withMotorOutput(
+                                                                    new MotorOutputConfigs().withNeutralMode(NeutralModeValue.Brake)
+                                                                  );
+
+
+  public static class OperatorConstants {
+
+    public static final int kDriverControllerPort = 0;
+    
+  }
+
+  public static class IntakeConstants {
+
+    public static final int rollerID = 0;
+    public static final int extendID = 1;
+
+    public static final double extend_kP = 0;
+    public static final double extend_kI = 0;
+    public static final double extend_kD = 0;
+
+    //This position is the amount of rotations it takes the motor to reach the point you want the intake to be at
+    public static final double intakePos = 0;
+
+    public static final TalonFXConfiguration rollerConfig = commonConfig.clone();
+    public static final TalonFXConfiguration extendConfig = commonConfig.clone();
+
+  }
+
+  public static class SpindexerConstants {
+
+    public static final int spinMotorID = 2;
+    public static final int feedMotorID = 3;
+
+    public static final TalonFXConfiguration spinMotorConfig = commonConfig.clone();
+    public static final TalonFXConfiguration feedMotorConfig = commonConfig.clone();
+
+  }
+
+  public static class TurrentConstants {
+
+    public static final int turrentMotorID = 4;
+    public static final double turrent_kP = 0;
+    public static final double turrent_kI = 0;
+    public static final double turrent_kD = 0;
+
+    public static final TalonFXConfiguration turrentMotorConfig = commonConfig.clone();
+
+  }
+
+  public static class HoodedShooterConst{
+
+    public static final int flywheelL_ID = 5;
+    public static final int flywheelF_ID = 6;
+    public static final int hoodMotorID = 7;
+
+    public static final TalonFXConfiguration flywheelConfig = commonConfig.clone();
+    public static final TalonFXConfiguration hoodMotorConfig = commonConfig.clone();
+
+    public static final double hood_kP = 0;
+    public static final double hood_kI = 0;
+    public static final double hood_kD = 0;
+
+    public static final double flywheel_kP = 0;
+    public static final double flywheel_kI = 0;
+    public static final double flywheel_kD = 0;
+
+  }
+}
