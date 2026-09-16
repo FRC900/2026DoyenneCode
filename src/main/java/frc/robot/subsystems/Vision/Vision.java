@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot.subsystems.Vision;
 
 import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
@@ -14,7 +14,7 @@ public class Vision extends SubsystemBase{
 
     private AprilTagFieldLayout fieldLayout;
 
-    private final PhotonCamera turrentCam = new PhotonCamera("turrentCam");
+    private final PhotonCamera turretCam = new PhotonCamera("turretCam");
     private final PhotonCamera topRightCam = new PhotonCamera("topRightCam");
     private final PhotonCamera rightCam = new PhotonCamera("rightCam");
     private final PhotonCamera leftCam = new PhotonCamera("leftCam");

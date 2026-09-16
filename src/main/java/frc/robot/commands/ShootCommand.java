@@ -1,9 +1,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Hood;
-import frc.robot.subsystems.Spindexer;
-import frc.robot.subsystems.Turrent;
+import frc.robot.subsystems.Hood.Hood;
+import frc.robot.subsystems.Spindexer.Spindexer;
+import frc.robot.subsystems.Turret.Turret;
 
 public class ShootCommand extends Command{
     @SuppressWarnings("unused")
@@ -11,12 +11,12 @@ public class ShootCommand extends Command{
     @SuppressWarnings("unused")
     private final Spindexer spindexerSubsystem;
     @SuppressWarnings("unused")
-    private final Turrent turrentSubsystem;
+    private final Turret turretSubsystem;
 
-    public ShootCommand(Hood h_subsystem, Spindexer s_subsystem, Turrent t_subsystem){
+    public ShootCommand(Hood h_subsystem, Spindexer s_subsystem, Turret t_subsystem){
         hoodSubsystem = h_subsystem;
         spindexerSubsystem = s_subsystem;
-        turrentSubsystem = t_subsystem;
+        turretSubsystem = t_subsystem;
 
         addRequirements(h_subsystem, s_subsystem, t_subsystem);
     }

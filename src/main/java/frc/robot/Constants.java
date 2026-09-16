@@ -57,40 +57,33 @@ public final class Constants {
   public static class SpindexerConstants {
 
     public static final int spinMotorID = 2;
-    public static final int feedMotorID = 3;
 
     public static final TalonFXConfiguration spinMotorConfig = commonConfig.clone();
-    public static final TalonFXConfiguration feedMotorConfig = commonConfig.clone();
 
   }
 
-  public static class TurrentConstants {
+  public static class TurretConstants {
 
-    public static final int turrentMotorID = 4;
-    public static final double turrent_kP = 0;
-    public static final double turrent_kI = 0;
-    public static final double turrent_kD = 0;
+    public static final int turretMotorID = 4;
+    public static final double turret_kP = 0;
+    public static final double turret_kI = 0;
+    public static final double turret_kD = 0;
+    //22:1
+    public static final double turretGearRatio = 22;
 
-    public static final TalonFXConfiguration turrentMotorConfig = commonConfig.clone();
+    public static final TalonFXConfiguration turretMotorConfig = commonConfig.clone();
 
   }
 
   public static class HoodedShooterConst{
 
-    public static final int flywheelL_ID = 5;
-    public static final int flywheelF_ID = 6;
     public static final int hoodMotorID = 7;
 
-    public static final TalonFXConfiguration flywheelConfig = commonConfig.clone();
     public static final TalonFXConfiguration hoodMotorConfig = commonConfig.clone();
 
     public static final double hood_kP = 0;
     public static final double hood_kI = 0;
     public static final double hood_kD = 0;
-
-    public static final double flywheel_kP = 0;
-    public static final double flywheel_kI = 0;
-    public static final double flywheel_kD = 0;
 
   }
 }
