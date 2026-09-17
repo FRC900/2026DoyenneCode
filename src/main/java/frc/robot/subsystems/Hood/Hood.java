@@ -1,11 +1,14 @@
 package frc.robot.subsystems.Hood;
 
+import org.littletonrobotics.junction.Logger;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 
 public class Hood extends SubsystemBase{
 
     HoodIO io;
+    private HoodIOInputsAutoLogged inputs = new HoodIOInputsAutoLogged();
 
     public Hood(){
 
@@ -27,13 +30,14 @@ public class Hood extends SubsystemBase{
         return io.getHoodAngle();
     }
 
-  @Override
-  public void periodic() {
-    
-  }
+    @Override
+    public void periodic() {
+        io.updateInputs(inputs);
+        Logger.processInputs("Hood", inputs);
+    }
 
-  @Override
-  public void simulationPeriodic() {
-    
-  }
+    @Override
+    public void simulationPeriodic() {
+        
+    }
 }
