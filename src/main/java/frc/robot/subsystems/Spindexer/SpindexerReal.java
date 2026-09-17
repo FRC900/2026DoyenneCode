@@ -23,4 +23,9 @@ public class SpindexerReal implements SpindexerIO{
         //clamps speed between -1 & 1
         spinMotor.set(Math.max(Math.min(1, speed), -1));
     }
+    
+    @Override
+    public void stopSpindexer(){
+        spinMotor.stopMotor();
+    }
 }

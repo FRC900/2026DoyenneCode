@@ -38,14 +38,6 @@ public final class Constants {
     
   }
 
-  public static class SpindexerConstants {
-
-    public static final int spinMotorID = 2;
-
-    public static final TalonFXConfiguration spinMotorConfig = commonConfig.clone();
-
-  }
-
   public static class TurretConstants {
 
     public static final int turretMotorID = 4;
@@ -57,5 +49,12 @@ public final class Constants {
 
     public static final TalonFXConfiguration turretMotorConfig = commonConfig.clone();
 
+  }
+
+  public static class ShootCommandConstants {
+    public static final double flywheelSpeed = 0;
+    public static final double feederSpeed = 0;
+    public static final double spindexerSpeed = 0;
+    public static final double hoodAngle = 0;
   }
 }

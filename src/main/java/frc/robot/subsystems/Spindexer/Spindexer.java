@@ -23,6 +23,10 @@ public class Spindexer extends SubsystemBase{
         io.spinSpindexer(speed);
     }
 
+    public void stopSpindexer(){
+        io.stopSpindexer();
+    }
+
     @Override
     public void periodic(){
 

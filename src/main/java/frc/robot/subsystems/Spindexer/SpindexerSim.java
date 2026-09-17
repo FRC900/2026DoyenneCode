@@ -17,4 +17,9 @@ public class SpindexerSim implements SpindexerIO{
         //clamps speed between -1 & 1
         System.out.println(Math.max(Math.min(1, speed), -1));
     }
+
+    @Override
+    public void stopSpindexer(){
+        System.out.println("Stoped");
+    }
 }

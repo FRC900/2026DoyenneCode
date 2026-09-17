@@ -1,38 +1,53 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.ShootCommandConstants;
+import frc.robot.subsystems.Feeder.Feeder;
+import frc.robot.subsystems.Flywheel.Flywheel;
 import frc.robot.subsystems.Hood.Hood;
 import frc.robot.subsystems.Spindexer.Spindexer;
-import frc.robot.subsystems.Turret.Turret;
 
 public class ShootCommand extends Command{
-    @SuppressWarnings("unused")
     private final Hood hoodSubsystem;
-    @SuppressWarnings("unused")
     private final Spindexer spindexerSubsystem;
-    @SuppressWarnings("unused")
-    private final Turret turretSubsystem;
+    private final Flywheel flywheelSubsystem;
+    private final Feeder feederSubsystem;
 
-    public ShootCommand(Hood h_subsystem, Spindexer s_subsystem, Turret t_subsystem){
+
+    public ShootCommand(Hood h_subsystem, Spindexer s_subsystem, Flywheel fw_subsystem, Feeder f_subsystem){
         hoodSubsystem = h_subsystem;
         spindexerSubsystem = s_subsystem;
-        turretSubsystem = t_subsystem;
+        flywheelSubsystem = fw_subsystem;
+        feederSubsystem = f_subsystem;
 
-        addRequirements(h_subsystem, s_subsystem, t_subsystem);
+        addRequirements(hoodSubsystem, spindexerSubsystem, feederSubsystem, flywheelSubsystem);
     }
 
     @Override
     public void initialize(){
-
+        
     }
 
     @Override
     public void execute(){
+
+        /*
+         * TODO:
+         * Something something, vision to set hood angle, Something something
+         */
+
+        hoodSubsystem.setHoodAngle(ShootCommandConstants.hoodAngle);
+        spindexerSubsystem.spinSpindexer(ShootCommandConstants.spindexerSpeed);
+        feederSubsystem.feedFeeder(ShootCommandConstants.feederSpeed);
+        flywheelSubsystem.setFlywheelSpeed(ShootCommandConstants.flywheelSpeed);
         
     }
 
     @Override
     public void end(boolean interrupted){
+        spindexerSubsystem.stopSpindexer();
+        feederSubsystem.stopFeeder();
+        flywheelSubsystem.stopFlywheel();
 
     }
 
