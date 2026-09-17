@@ -74,16 +74,4 @@ public final class Constants {
     public static final TalonFXConfiguration turretMotorConfig = commonConfig.clone();
 
   }
-
-  public static class HoodedShooterConst{
-
-    public static final int hoodMotorID = 7;
-
-    public static final TalonFXConfiguration hoodMotorConfig = commonConfig.clone();
-
-    public static final double hood_kP = 0;
-    public static final double hood_kI = 0;
-    public static final double hood_kD = 0;
-
-  }
 }
