@@ -4,19 +4,17 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 
-import frc.robot.Constants.HoodedShooterConst;
-
 public class HoodReal implements HoodIO{
 
-    public final TalonFX hoodMotor = new TalonFX(HoodedShooterConst.hoodMotorID);
-    public final TalonFXConfiguration hoodConfig = HoodedShooterConst.hoodMotorConfig.clone();
+    public final TalonFX hoodMotor = new TalonFX(HoodConstants.hoodMotorID);
+    public final TalonFXConfiguration hoodConfig = HoodConstants.hoodMotorConfig.clone();
 
     public final PositionVoltage hoodAngle = new PositionVoltage(0);
 
     public HoodReal(){
-        hoodConfig.Slot0.kP = HoodedShooterConst.hood_kP;
-        hoodConfig.Slot0.kI = HoodedShooterConst.hood_kI;
-        hoodConfig.Slot0.kD = HoodedShooterConst.hood_kD;
+        hoodConfig.Slot0.kP = HoodConstants.hood_kP;
+        hoodConfig.Slot0.kI = HoodConstants.hood_kI;
+        hoodConfig.Slot0.kD = HoodConstants.hood_kD;
 
 
         hoodMotor.getConfigurator().apply(hoodConfig);
