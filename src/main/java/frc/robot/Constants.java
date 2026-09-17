@@ -34,13 +34,8 @@ public final class Constants {
   public static class OperatorConstants {
 
     public static final int kDriverControllerPort = 0;
+    public static final int kOpperaatorControllerPort = 1;
     
-  }
-
-  public static class IntakeConstants {
-
-
-
   }
 
   public static class SpindexerConstants {
