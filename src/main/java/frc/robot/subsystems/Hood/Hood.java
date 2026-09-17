@@ -1,44 +1,31 @@
 package frc.robot.subsystems.Hood;
 
-import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.controls.PositionVoltage;
-import com.ctre.phoenix6.hardware.TalonFX;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.HoodedShooterConst;
+import frc.robot.Robot;
 
 public class Hood extends SubsystemBase{
 
-    public final TalonFX hoodMotor = new TalonFX(HoodedShooterConst.hoodMotorID);
-    public final TalonFXConfiguration hoodConfig = HoodedShooterConst.hoodMotorConfig.clone();
-
-    public final PositionVoltage hoodAngle = new PositionVoltage(0);
+    HoodIO io;
 
     public Hood(){
-        hoodConfig.Slot0.kP = HoodedShooterConst.hood_kP;
-        hoodConfig.Slot0.kI = HoodedShooterConst.hood_kI;
-        hoodConfig.Slot0.kD = HoodedShooterConst.hood_kD;
 
+        io = Robot.isReal() ? new HoodReal() : new HoodSim();
 
-        hoodMotor.getConfigurator().apply(hoodConfig);
     }
 
     //Set the angle of the hood
     public void setHoodAngle(double angle){
         //set a calculation to convert angle into motor rotation
-        hoodAngle.withSlot(0).withPosition(angle);
-        hoodMotor.setControl(hoodAngle);
+        io.setHoodAngle(angle);
     }
 
     public void stopHood(){
-        hoodMotor.stopMotor();
+        io.stopHood();
     }
 
     public double getHoodAngle(){
-        return hoodMotor.getPosition().getValueAsDouble();
+        return io.getHoodAngle();
     }
-
-
 
   @Override
   public void periodic() {
