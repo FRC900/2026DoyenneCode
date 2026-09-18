@@ -10,6 +10,7 @@ import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+@SuppressWarnings("unused")
 public class Vision extends SubsystemBase{
 
     private AprilTagFieldLayout fieldLayout;
