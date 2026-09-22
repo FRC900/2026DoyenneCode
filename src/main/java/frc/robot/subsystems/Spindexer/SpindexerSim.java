@@ -1,4 +1,4 @@
-package frc.robot.subsystems.Spindexer;
+package frc.robot.subsystems.spindexer;
 
 public class SpindexerSim implements SpindexerIO{
 

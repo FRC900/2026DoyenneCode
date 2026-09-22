@@ -1,4 +1,4 @@
-package frc.robot.subsystems.Hood;
+package frc.robot.subsystems.hood;
 
 public class HoodSim implements HoodIO{
 

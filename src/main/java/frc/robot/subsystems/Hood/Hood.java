@@ -1,9 +1,10 @@
-package frc.robot.subsystems.Hood;
+package frc.robot.subsystems.hood;
 
 import org.littletonrobotics.junction.Logger;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
+import frc.robot.subsystems.Hood.HoodIOInputsAutoLogged;
 
 public class Hood extends SubsystemBase{
 

@@ -1,4 +1,4 @@
-package frc.robot.subsystems.Feeder;
+package frc.robot.subsystems.feeder;
 
 import frc.robot.Robot;
 
