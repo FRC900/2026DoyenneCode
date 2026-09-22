@@ -1,4 +1,4 @@
-package frc.robot.subsystems.Turret;
+package frc.robot.subsystems.turret;
 
 public class TurretSim implements TurretIO{ 
 
