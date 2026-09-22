@@ -1,4 +1,4 @@
-package frc.robot.subsystems.Flywheel;
+package frc.robot.subsystems.flywheel;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 
