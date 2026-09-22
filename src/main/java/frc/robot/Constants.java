@@ -38,19 +38,6 @@ public final class Constants {
     
   }
 
-  public static class TurretConstants {
-
-    public static final int turretMotorID = 4;
-    public static final double turret_kP = 0;
-    public static final double turret_kI = 0;
-    public static final double turret_kD = 0;
-    //22:1
-    public static final double turretGearRatio = 22;
-
-    public static final TalonFXConfiguration turretMotorConfig = commonConfig.clone();
-
-  }
-
   public static class ShootCommandConstants {
     public static final double flywheelSpeed = 0;
     public static final double feederSpeed = 0;
