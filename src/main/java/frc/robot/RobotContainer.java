@@ -4,10 +4,14 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
+import com.ctre.phoenix6.swerve.SwerveModule;
+import com.ctre.phoenix6.swerve.SwerveRequest;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.swerve.*;;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -17,7 +21,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-
+  public CommandSwerveDrivetrain drivetrain;
+  
   // Replace with CommandPS4Controller or CommandJoystick if needed
   @SuppressWarnings("unused")
   private final CommandXboxController m_driverController =
@@ -27,8 +32,15 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+    drivetrain = TunerConstants.createDrivetrain();
+
   }
 
+   private final SwerveRequest.FieldCentric drive =
+            new SwerveRequest.FieldCentric()
+                    .withDeadband(TunerConstants.kSpeedAt12Volts.magnitude() * 0.1)
+                    .withRotationalDeadband(TunerConstants.kMaxAngularRate * 0.1)
+                    .withDriveRequestType(SwerveModule.DriveRequestType.OpenLoopVoltage);
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
@@ -40,6 +52,20 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
+    drivetrain.setDefaultCommand(
+                drivetrain.applyRequest(
+                        () ->
+                                drive.withVelocityX(
+                                                -m_driverController.getLeftY()
+                                                        * TunerConstants.kSpeedAt12Volts
+                                                              .magnitude())
+                                        .withVelocityY(
+                                                -m_driverController.getLeftX()
+                                                        * TunerConstants.kSpeedAt12Volts
+                                                                .magnitude())
+                                        .withRotationalRate(
+                                                -m_driverController.getRightX()
+                                                        *TunerConstants.kMaxAngularRate)));
   }
 
   /**
