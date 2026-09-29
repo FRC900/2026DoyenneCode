@@ -4,12 +4,12 @@ import org.littletonrobotics.junction.Logger;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
-import frc.robot.subsystems.Hood.HoodIOInputsAutoLogged;
+//import frc.robot.subsystems.Hood.HoodIOInputsAutoLogged;
 
 public class Hood extends SubsystemBase{
 
     HoodIO io;
-    private HoodIOInputsAutoLogged inputs = new HoodIOInputsAutoLogged();
+    //private HoodIOInputsAutoLogged inputs = new HoodIOInputsAutoLogged();
 
     public Hood(){
 
@@ -33,8 +33,8 @@ public class Hood extends SubsystemBase{
 
     @Override
     public void periodic() {
-        io.updateInputs(inputs);
-        Logger.processInputs("Hood", inputs);
+        //io.updateInputs(inputs);
+        //Logger.processInputs("Hood", inputs);
     }
 
     @Override

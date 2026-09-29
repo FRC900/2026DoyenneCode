@@ -57,14 +57,15 @@ public class RobotContainer {
                                 drive.withVelocityX(
                                                 -m_driverController.getLeftY()
                                                         * TunerConstants.kSpeedAt12Volts
-                                                              .magnitude())
+                                                              .magnitude() * 0.2)
                                         .withVelocityY(
                                                 -m_driverController.getLeftX()
                                                         * TunerConstants.kSpeedAt12Volts
-                                                                .magnitude())
+                                                                .magnitude() * 0.2)
                                         .withRotationalRate(
-                                                -m_driverController.getRightX()
-                                                        *TunerConstants.kMaxAngularRate)));
+                                                -m_driverController.getRightX() 
+                                                        * TunerConstants.kMaxAngularRate
+                                                         )));
   }
 
   /**
