@@ -2,10 +2,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ShootCommandConstants;
-import frc.robot.subsystems.Feeder.Feeder;
-import frc.robot.subsystems.Flywheel.Flywheel;
-import frc.robot.subsystems.Hood.Hood;
-import frc.robot.subsystems.Spindexer.Spindexer;
+import frc.robot.subsystems.feeder.Feeder;
+import frc.robot.subsystems.flywheel.Flywheel;
+import frc.robot.subsystems.hood.Hood;
+import frc.robot.subsystems.spindexer.Spindexer;
 
 public class ShootCommand extends Command{
     private final Hood hoodSubsystem;
