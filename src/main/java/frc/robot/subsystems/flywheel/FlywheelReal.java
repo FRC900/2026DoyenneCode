@@ -25,7 +25,7 @@ public class FlywheelReal implements FlywheelIO{
         flywheelLeader.getConfigurator().apply(config);
         flywheelFollower.getConfigurator().apply(config);
 
-    flywheelFollower.setControl(new Follower(5, MotorAlignmentValue.Opposed));
+    flywheelFollower.setControl(new Follower(FlywheelConstants.flywheelL_ID, MotorAlignmentValue.Opposed));
     } 
     //Enter RPM you want flywheel to do
     @Override

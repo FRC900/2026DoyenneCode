@@ -15,7 +15,7 @@ public class AdjustFlywheelSpeedCommand extends Command{
 
     @Override
     public void initialize(){
-        flywheelSubsystem.setFlywheelSpeed(500);
+        flywheelSubsystem.setFlywheelSpeed(250);
     }
 
     @Override

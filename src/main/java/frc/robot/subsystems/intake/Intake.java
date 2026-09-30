@@ -18,19 +18,13 @@ public class Intake extends SubsystemBase {
 
   }
 
-  //Runs rollers with a given duty cycle,
-  /*
-  1 meaning 100% in positive direction,
-  -1 meaning 100% in the opposite direction, 
-  and 0 being no movement at all
-  */
-  public void runRollers(double dutyCycle){
-    io.runRollers(dutyCycle);
-  }
-
   //Extends the intake to the setpoint within the constants
   public void extendIntake(){
     io.extendIntake();
+  }
+
+  public void stopIntake(){
+    io.stopIntake();
   }
 
   @Override

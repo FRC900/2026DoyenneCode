@@ -8,10 +8,23 @@ import com.ctre.phoenix6.swerve.SwerveModule;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.subsystems.swerve.*;;
+import frc.robot.commands.RollIntakeRollersCommand;
+import frc.robot.commands.AdjustHoodCommand;
+import frc.robot.commands.AdjustFlywheelSpeedCommand;
+import frc.robot.commands.ExtendIntakeCommand;
+import frc.robot.commands.SpinSpindexerCommand;
+import frc.robot.commands.FeedFeederCommand;
+import frc.robot.subsystems.swerve.*;
+import frc.robot.subsystems.hood.*;
+import frc.robot.subsystems.rollers.*;
+import frc.robot.subsystems.flywheel.*;
+import frc.robot.subsystems.intake.*;
+import frc.robot.subsystems.feeder.*;
+import frc.robot.subsystems.spindexer.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -22,11 +35,21 @@ import frc.robot.subsystems.swerve.*;;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public CommandSwerveDrivetrain drivetrain;
+  public Rollers rollers = new Rollers();
+  public Hood hood = new Hood();
+  public Flywheel flywheel = new Flywheel();
+  public Intake intake = new Intake();
+  public Feeder feeder = new Feeder();
+  public Spindexer spindexer = new Spindexer();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
   @SuppressWarnings("unused")
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
+
+private final CommandXboxController m_operatorController =
+        new CommandXboxController(OperatorConstants.kOperatorControllerPort);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -63,9 +86,19 @@ public class RobotContainer {
                                                         * TunerConstants.kSpeedAt12Volts
                                                                 .magnitude())
                                         .withRotationalRate(
-                                                -m_driverController.getRightX()
+                                               -m_driverController.getRightX()
                                                         *TunerConstants.kMaxAngularRate)));
-  }
+
+   m_operatorController.leftBumper().onTrue(new ExtendIntakeCommand(intake));
+   m_operatorController.leftTrigger().whileTrue(new RollIntakeRollersCommand(rollers));
+   
+   m_operatorController.rightBumper().whileTrue(new SpinSpindexerCommand(spindexer));
+   m_operatorController.rightTrigger().whileTrue(new ParallelCommandGroup(new AdjustFlywheelSpeedCommand(flywheel), new FeedFeederCommand(feeder)));
+
+   m_operatorController.b().onTrue(new AdjustHoodCommand(hood));
+   m_operatorController.a().onTrue(new AdjustFlywheelSpeedCommand(flywheel));
+   
+}
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

@@ -27,6 +27,7 @@ public class HoodReal implements HoodIO{
         hoodMotor.getConfigurator().apply(hoodConfig);
     }
 
+    @SuppressWarnings("unused")
     private void reconfigure() { //shows how to use logged tunable numbers
         hoodConfig.Slot0.kP = KP.get();
         hoodConfig.Slot0.kI = KI.get();
@@ -36,6 +37,7 @@ public class HoodReal implements HoodIO{
     @Override
     public void setHoodAngle(double angle){
         //set a calculation to convert angle into motor rotation
+        
         hoodAngle.withSlot(0).withPosition(angle);
         hoodMotor.setControl(hoodAngle);
     }
