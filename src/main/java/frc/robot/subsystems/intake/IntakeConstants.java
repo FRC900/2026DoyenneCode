@@ -5,8 +5,8 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import frc.robot.Constants;
 
 public class IntakeConstants {
-    public static final int rollerID = 0;
-    public static final int extendID = 1;
+    public static final int rollerID = 60;
+    public static final int extendID = 61;
 
     public static final double extend_kP = 0;
     public static final double extend_kI = 0;

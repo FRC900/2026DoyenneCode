@@ -5,7 +5,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import frc.robot.Constants;
 
 public class HoodConstants {
-    public static final int hoodMotorID = 7;
+    public static final int hoodMotorID = 34;
 
     public static final TalonFXConfiguration hoodMotorConfig = Constants.commonConfig.clone();
 
