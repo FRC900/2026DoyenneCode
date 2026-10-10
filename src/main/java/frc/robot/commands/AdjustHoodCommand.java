@@ -14,7 +14,7 @@ public class AdjustHoodCommand extends Command{
 
     @Override
     public void initialize(){
-        hoodSubsystem.setHoodAngle(10);
+        hoodSubsystem.setHoodAngle(15);
     }
 
     @Override

@@ -6,6 +6,6 @@ public interface FeederIO {
 
     public void stopFeeder();
 
-    public void getFeederSpeed();
+    public double getFeederSpeed();
 
 }

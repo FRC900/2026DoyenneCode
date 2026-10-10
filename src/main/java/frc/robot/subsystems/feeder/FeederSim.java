@@ -1,24 +1,34 @@
 package frc.robot.subsystems.feeder;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.sim.TalonFXSimState;
+
+import edu.wpi.first.math.MathUtil;
+
 public class FeederSim implements FeederIO{
     
-    public FeederSim(){
+    TalonFX feedMotor;
+    TalonFXSimState feedMotorSim;
 
+    public FeederSim(){
+        feedMotor = new TalonFX(FeederConstants.feedMotorID);
+        feedMotorSim = feedMotor.getSimState();
     }
 
     @Override
     public void feedFeeder(double speed){
-        System.out.println("Feeding feeder");
+        speed = MathUtil.clamp(speed, -1.0, 1.0);
+        feedMotorSim.setSupplyVoltage(speed * 12);
     }
 
     @Override
     public void stopFeeder(){
-        System.out.println("Stopping feeder");
+        feedMotorSim.setSupplyVoltage(0);
     }
 
     @Override
-    public void getFeederSpeed(){
-        System.out.println("Getting feeder speed");
+    public double getFeederSpeed(){
+        return feedMotorSim.getMotorVoltage();
     }
 
 }

@@ -9,7 +9,7 @@ public class HoodConstants {
 
     public static final TalonFXConfiguration hoodMotorConfig = Constants.commonConfig.clone();
 
-    public static final double hood_kP = 0;
+    public static final double hood_kP = 1;
     public static final double hood_kI = 0;
     public static final double hood_kD = 0;
 }

@@ -12,6 +12,9 @@ public class IntakeConstants {
     public static final double extend_kI = 0;
     public static final double extend_kD = 0;
 
+    //TODO: needs a correct gear ratio
+    public static final double intakeGearing = 0;
+
     //This position is the amount of rotations it takes the motor to reach the point you want the intake to be at
     public static final double intakePos = 0;
 

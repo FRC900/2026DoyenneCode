@@ -10,7 +10,7 @@ public class Flywheel extends SubsystemBase{
 
     public Flywheel(){
 
-      io = Robot.isReal() ? new FlywheelReal() : new FlywheelSim();
+      io = Robot.isReal() ? new FlywheelReal() : new FlywheelSimulation();
 
     }
 

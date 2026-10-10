@@ -2,7 +2,7 @@ package frc.robot.subsystems.hood;
 
 public class HoodSim implements HoodIO{
 
-    private double goal;
+
 
     public HoodSim(){
 
@@ -11,7 +11,6 @@ public class HoodSim implements HoodIO{
     @Override
     public void setHoodAngle(double angle){
         //set a calculation to convert angle into motor rotation
-        goal = angle;
         System.out.println("");
     }
 
@@ -25,10 +24,4 @@ public class HoodSim implements HoodIO{
         return 2.0;
     }
 
-    @Override
-    public void updateInputs(HoodIOInputs inputs) {
-        inputs.goalRotations = this.goal;
-        inputs.position = 2.0;
-        inputs.voltage = 12;
-    }
 }

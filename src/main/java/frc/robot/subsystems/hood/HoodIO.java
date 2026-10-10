@@ -16,7 +16,6 @@ public interface HoodIO {
     public void stopHood();
 
     public double getHoodAngle();
-    
-    public default void updateInputs(HoodIOInputs inputs) {}
+
 
 }

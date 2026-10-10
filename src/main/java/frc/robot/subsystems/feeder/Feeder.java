@@ -20,8 +20,8 @@ public class Feeder extends SubsystemBase{
         io.stopFeeder();
     }
 
-    public void getFeederSpeed(){
-        io.getFeederSpeed();
+    public double getFeederSpeed(){
+        return io.getFeederSpeed();
     }
 
 }
