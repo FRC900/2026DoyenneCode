@@ -34,13 +34,13 @@ import frc.robot.subsystems.spindexer.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-    public CommandSwerveDrivetrain drivetrain;
-  public Rollers rollers = new Rollers();
-  public Hood hood = new Hood();
-  public Flywheel flywheel = new Flywheel();
-  public Intake intake = new Intake();
-  public Feeder feeder = new Feeder();
-  public Spindexer spindexer = new Spindexer();
+  public CommandSwerveDrivetrain drivetrain;
+  public Rollers rollers;
+  public Hood hood;
+  public Flywheel flywheel;
+  public Intake intake;
+  public Feeder feeder;
+  public Spindexer spindexer;
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
   @SuppressWarnings("unused")
@@ -54,6 +54,12 @@ private final CommandXboxController m_operatorController =
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
+    spindexer = new Spindexer();
+    feeder = new Feeder();
+    intake = new Intake();
+    flywheel = new Flywheel();
+    hood = new Hood();
+    rollers = new Rollers();
     drivetrain = TunerConstants.createDrivetrain();
     configureBindings();
   }

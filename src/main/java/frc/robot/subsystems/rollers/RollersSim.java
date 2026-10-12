@@ -7,8 +7,9 @@ import edu.wpi.first.math.MathUtil;
 
 public class RollersSim implements RollersIO{
 
-  TalonFX rollerMotor;
-  TalonFXSimState rollerSim;
+  private TalonFX rollerMotor;
+  private TalonFXSimState rollerSim;
+  
 
   public RollersSim() {
 

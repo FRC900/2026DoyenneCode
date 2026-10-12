@@ -7,8 +7,9 @@ import edu.wpi.first.math.MathUtil;
 
 public class SpindexerSim implements SpindexerIO{
 
-    TalonFX spindexerMotor;
-    TalonFXSimState spinSim;
+
+    private TalonFX spindexerMotor;
+    private TalonFXSimState spinSim;
 
     public SpindexerSim(){
         
