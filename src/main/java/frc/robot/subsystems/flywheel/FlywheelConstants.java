@@ -5,8 +5,6 @@ import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
-import frc.robot.Constants;
-
 public class FlywheelConstants {
     public static final int flywheelL_ID = 55;
     public static final int flywheelF_ID = 56;

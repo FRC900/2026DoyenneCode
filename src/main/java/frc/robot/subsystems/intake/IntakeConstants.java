@@ -5,8 +5,6 @@ import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
-import frc.robot.Constants;
-
 public class IntakeConstants {
     public static final int rollerID = 60;
     public static final int extendID = 61;

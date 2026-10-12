@@ -1,25 +1,31 @@
 package frc.robot.subsystems.rollers;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.sim.TalonFXSimState;
+
+import edu.wpi.first.math.MathUtil;
+
 public class RollersSim implements RollersIO{
+
+  TalonFX rollerMotor;
+  TalonFXSimState rollerSim;
 
   public RollersSim() {
 
+    rollerMotor = new TalonFX(RollersConstants.rollerID);
+    rollerSim = rollerMotor.getSimState();
+
   }
 
-  //Runs rollers with a given duty cycle,
-  /*
-  1 meaning 100% in positive direction,
-  -1 meaning 100% in the opposite direction, 
-  and 0 being no movement at all
-  */
   @Override
   public void runRollers(double dutyCycle){
-    System.out.println("");
+    dutyCycle = MathUtil.clamp(dutyCycle, -1, 1);
+    rollerSim.setSupplyVoltage(dutyCycle * 12);
   }
 
   @Override
   public void stopRollers(){
-    System.out.println("stop");
+    rollerSim.setSupplyVoltage(0);
   }
 
 }

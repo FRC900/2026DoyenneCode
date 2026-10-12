@@ -1,9 +1,20 @@
 package frc.robot.subsystems.spindexer;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.sim.TalonFXSimState;
+
+import edu.wpi.first.math.MathUtil;
+
 public class SpindexerSim implements SpindexerIO{
+
+    TalonFX spindexerMotor;
+    TalonFXSimState spinSim;
 
     public SpindexerSim(){
         
+        spindexerMotor = new TalonFX(SpindexerConstants.spinMotorID);
+        spinSim = spindexerMotor.getSimState();
+
     }
     
     //Spins the spindexer at a given duty cycle
@@ -14,12 +25,12 @@ public class SpindexerSim implements SpindexerIO{
     */
     @Override
     public void spinSpindexer(double speed){
-        //clamps speed between -1 & 1
-        System.out.println(Math.max(Math.min(1, speed), -1));
+        speed = MathUtil.clamp(speed, -1, 1);
+        spinSim.setSupplyVoltage(speed * 12);
     }
 
     @Override
     public void stopSpindexer(){
-        System.out.println("Stoped");
+        spinSim.setSupplyVoltage(0);
     }
 }

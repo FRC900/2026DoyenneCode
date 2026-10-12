@@ -5,8 +5,6 @@ import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
-import frc.robot.Constants;
-
 public final class FeederConstants {
     
     public static final int feedMotorID = 40;
