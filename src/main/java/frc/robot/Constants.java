@@ -18,18 +18,6 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-      public static final TalonFXConfiguration commonConfig = new TalonFXConfiguration()
-                                                                  .withCurrentLimits(
-                                                                    new CurrentLimitsConfigs()
-                                                                      .withStatorCurrentLimit(120)
-                                                                      .withSupplyCurrentLimit(60)
-                                                                      .withStatorCurrentLimitEnable(true)
-                                                                      .withSupplyCurrentLimitEnable(true)
-                                                                  )
-                                                                  .withMotorOutput(
-                                                                    new MotorOutputConfigs().withNeutralMode(NeutralModeValue.Brake)
-                                                                  );
-
 
   public static class OperatorConstants {
 

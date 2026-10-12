@@ -1,6 +1,9 @@
 package frc.robot.subsystems.flywheel;
 
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import frc.robot.Constants;
 
@@ -16,6 +19,16 @@ public class FlywheelConstants {
     public static final double flywheel_kV = 0.1;
     public static final double flywheel_kA = 0;
 
-    public static final TalonFXConfiguration flywheelConfig = Constants.commonConfig.clone();
+    public static final TalonFXConfiguration flywheelConfig = new TalonFXConfiguration()
+                                                                  .withCurrentLimits(
+                                                                    new CurrentLimitsConfigs()
+                                                                      .withStatorCurrentLimit(120)
+                                                                      .withSupplyCurrentLimit(60)
+                                                                      .withStatorCurrentLimitEnable(true)
+                                                                      .withSupplyCurrentLimitEnable(true)
+                                                                  )
+                                                                  .withMotorOutput(
+                                                                    new MotorOutputConfigs().withNeutralMode(NeutralModeValue.Coast)
+                                                                  );
 
 }

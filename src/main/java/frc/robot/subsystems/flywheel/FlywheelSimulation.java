@@ -13,7 +13,7 @@ public class FlywheelSimulation implements FlywheelIO{
         LinearSystemId.createFlywheelSystem(
             DCMotor.getKrakenX60(2), 
             1.0, 
-            0.0
+            1
         ), 
         DCMotor.getKrakenX60(2));
 

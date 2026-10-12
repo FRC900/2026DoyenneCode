@@ -17,7 +17,7 @@ public class IntakeSim implements IntakeIO{
       DCMotor.getKrakenX60(1), 
       IntakeConstants.intakeGearing,
       0.00022, 
-      19, 
+      0.4826, 
       0, 
       Units.degreesToRadians(90), 
       false, 
