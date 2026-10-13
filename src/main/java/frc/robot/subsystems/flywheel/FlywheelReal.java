@@ -19,6 +19,9 @@ public class FlywheelReal implements FlywheelIO{
         config.Slot0.kI = FlywheelConstants.flywheel_kI;
         config.Slot0.kD = FlywheelConstants.flywheel_kD;
 
+        config.Slot0.kV = FlywheelConstants.flywheel_kV;
+
+
         flywheelLeader.getConfigurator().apply(config);
         flywheelFollower.getConfigurator().apply(config);
 
