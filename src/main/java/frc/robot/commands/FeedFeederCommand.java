@@ -15,7 +15,7 @@ public class FeedFeederCommand extends Command{
 
     @Override
     public void initialize(){
-        feederSubsystem.feedFeeder(0.6);
+        feederSubsystem.feedFeeder(0.5);
     }
 
     @Override

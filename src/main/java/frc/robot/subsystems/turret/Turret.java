@@ -10,20 +10,22 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Turret extends SubsystemBase{
 
-    public static final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID);
-    public static final TalonFXConfiguration turretMotorConfig = TurretConstants.turretMotorConfig.clone();
+    public final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID);
+    public final TalonFXConfiguration turretMotorConfig = TurretConstants.turretMotorConfig.clone();
     
-    public static final CANcoder canCoder33To1 = new CANcoder(32, "mech");
-    public static final CANcoder canCoder29To1 = new CANcoder(31, "mech");
+    public final CANcoder canCoder33To1 = new CANcoder(32, "mech");
+    public final CANcoder canCoder29To1 = new CANcoder(31, "mech");
 
 
-    public static final PositionVoltage turretPos = new PositionVoltage(0).withSlot(0);    
+    public final PositionVoltage positionControl = new PositionVoltage(0).withSlot(0);    
 
     public Turret(){
         
         turretMotorConfig.Slot0.kP = TurretConstants.turret_kP;
         turretMotorConfig.Slot0.kI = TurretConstants.turret_kI;
         turretMotorConfig.Slot0.kD = TurretConstants.turret_kD;
+        turretMotorConfig.Slot0.kS = 0.2;
+        turretMotorConfig.Slot0.kV = 0.2;
 
         turretMotor.getConfigurator().apply(turretMotorConfig);
 
@@ -32,11 +34,22 @@ public class Turret extends SubsystemBase{
     }
 
     //set the setpoint in terms of radians to the position you want with your turret
-    public static void setTurretPos(double radians){
-        radians /= (2*Math.PI) * TurretConstants.turretGearRatio;
-        radians %= (2*Math.PI);
-        turretPos.withSlot(0).withPosition(radians);
-        turretMotor.setControl(turretPos);
+    public void setTurretPos(double radians){
+        radians %= 2*Math.PI;
+        double position = radians / ((2*Math.PI) * TurretConstants.turretGearRatio);
+        positionControl.withSlot(0).withPosition(position);
+        turretMotor.setControl(positionControl);
+    }
+
+    public void changeTurretPos(double radians){
+        double position = positionControl.Position;
+        position += radians / ((2*Math.PI) * TurretConstants.turretGearRatio);
+        positionControl.withSlot(0).withPosition(position);
+        turretMotor.setControl(positionControl);
+    }
+
+    public void stop(){
+        turretMotor.stopMotor();
     }
 
     @Override

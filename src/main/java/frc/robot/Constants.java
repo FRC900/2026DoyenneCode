@@ -4,6 +4,13 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.util.FlippingUtil;
+
+import edu.wpi.first.math.util.Units;
+
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -27,4 +34,10 @@ public final class Constants {
     public static final double spindexerSpeed = 0;
     public static final double hoodAngle = 0;
   }
+
+  public static class VisionConstants {
+    public static final Pose2d hubPos = new Pose2d(Units.inchesToMeters(182.11), Units.inchesToMeters(158.84), new Rotation2d());
+    public static final Pose2d redHubPos = FlippingUtil.flipFieldPose(hubPos);    
+  }
+
 }

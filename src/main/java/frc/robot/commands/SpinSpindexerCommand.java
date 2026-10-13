@@ -14,7 +14,7 @@ public class SpinSpindexerCommand extends Command{
 
     @Override
     public void initialize(){
-        spindexerSubsystem.spinSpindexer(0.6);
+        spindexerSubsystem.spinSpindexer(0.5);
     }
 
     @Override

@@ -7,4 +7,6 @@ public interface IntakeIO {
 
   public void stopIntake();
 
+  public void periodic();
+
 }

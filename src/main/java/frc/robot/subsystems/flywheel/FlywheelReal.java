@@ -6,16 +6,13 @@ import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.MotorAlignmentValue;
 
-
-
-
 public class FlywheelReal implements FlywheelIO{
-    public final TalonFX flywheelLeader = new TalonFX(FlywheelConstants.flywheelL_ID);
-    public final TalonFX flywheelFollower = new TalonFX(FlywheelConstants.flywheelF_ID);    
+    public final TalonFX flywheelLeader = new TalonFX(FlywheelConstants.flywheelL_ID, "mech");
+    public final TalonFX flywheelFollower = new TalonFX(FlywheelConstants.flywheelF_ID, "mech");    
 
     public final TalonFXConfiguration config = FlywheelConstants.flywheelConfig.clone();
 
-    public final VelocityVoltage flywheelSpeed = new VelocityVoltage(0);
+    public final VelocityVoltage flywheelSpeedControl = new VelocityVoltage(0);
 
     FlywheelReal(){
         config.Slot0.kP = FlywheelConstants.flywheel_kP;
@@ -29,10 +26,19 @@ public class FlywheelReal implements FlywheelIO{
     } 
     //Enter RPM you want flywheel to do
     @Override
-    public void setFlywheelSpeed(double speed){
-        speed /= 60;
-        flywheelSpeed.withSlot(0).withAcceleration(speed);
-        flywheelLeader.setControl(flywheelSpeed);
+    public void setFlywheelRPM(double rpm){
+        setFlywheelRPS(rpm / 60.0);
+    }
+
+    @Override
+    public void setFlywheelRPS(double rps){
+        flywheelSpeedControl.withSlot(0).withAcceleration(0).withVelocity(rps);
+        flywheelLeader.setControl(flywheelSpeedControl);
+    }
+
+    @Override
+    public double getError() {
+        return flywheelSpeedControl.Velocity - getFlywheelSpeed();
     }
 
     //Stop! STOP!

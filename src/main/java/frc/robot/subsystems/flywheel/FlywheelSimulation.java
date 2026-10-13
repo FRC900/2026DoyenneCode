@@ -42,8 +42,18 @@ public class FlywheelSimulation implements FlywheelIO{
     }
 
     @Override
-    public void setFlywheelSpeed(double speed) {
-        targetRPM = speed;
+    public void setFlywheelRPM(double rpm) {
+        targetRPM = rpm;
+    }
+
+    @Override
+    public void setFlywheelRPS(double rps) {
+        targetRPM = rps * 60;
+    }
+
+    @Override
+    public double getError() {
+        return targetRPM - flySim.getAngularVelocityRPM();
     }
 
     public void periodic(){

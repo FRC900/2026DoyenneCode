@@ -46,8 +46,10 @@ public class IntakeSim implements IntakeIO{
       intakeSim.setInputVoltage(0);
   }
 
+  @Override
   public void periodic(){
     intakeSim.setInputVoltage(intakeInputVoltage);
     intakeSim.update(0.01);
   }
+
 }
