@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class IntakeReal implements IntakeIO{
 
-    TalonFX extendMotor = new TalonFX(IntakeConstants.extendID);
+    TalonFX extendMotor = new TalonFX(IntakeConstants.extendID, "mech");
     TalonFXConfiguration extendConfig = IntakeConstants.extendConfig.clone();
 
     private boolean extended = false;

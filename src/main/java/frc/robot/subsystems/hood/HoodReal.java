@@ -7,7 +7,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 public class HoodReal implements HoodIO{
 
-    public final TalonFX hoodMotor = new TalonFX(HoodConstants.hoodMotorID);
+    public final TalonFX hoodMotor = new TalonFX(HoodConstants.hoodMotorID, "mech");
     public final TalonFXConfiguration hoodConfig = HoodConstants.hoodMotorConfig.clone();
 
     //private double goal;

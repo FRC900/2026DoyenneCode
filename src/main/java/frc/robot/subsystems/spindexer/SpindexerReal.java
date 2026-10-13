@@ -4,7 +4,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 public class SpindexerReal implements SpindexerIO{
-    public static final TalonFX spinMotor = new TalonFX(SpindexerConstants.spinMotorID);
+    public static final TalonFX spinMotor = new TalonFX(SpindexerConstants.spinMotorID, "mech");
 
     public static final TalonFXConfiguration spinMotorConfig = SpindexerConstants.spinMotorConfig.clone();
 

@@ -6,7 +6,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 public class RollersReal implements RollersIO{
 
-  TalonFX rollerMotor = new TalonFX(RollersConstants.rollerID);
+  TalonFX rollerMotor = new TalonFX(RollersConstants.rollerID, "mech");
 
   TalonFXConfiguration rollerConfig = RollersConstants.rollerConfig.clone();  
 

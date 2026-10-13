@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Turret extends SubsystemBase{
 
-    public final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID);
+    public final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID, "mech");
     public final TalonFXConfiguration turretMotorConfig = TurretConstants.turretMotorConfig.clone();
     
     public final CANcoder canCoder33To1 = new CANcoder(32, "mech");

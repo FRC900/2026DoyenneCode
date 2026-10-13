@@ -7,7 +7,7 @@ import edu.wpi.first.math.MathUtil;
 
 public class FeederReal implements FeederIO{
 
-    public static final TalonFX feedMotor = new TalonFX(FeederConstants.feedMotorID);
+    public static final TalonFX feedMotor = new TalonFX(FeederConstants.feedMotorID, "mech");
     public static final TalonFXConfiguration feedMotorConfig = FeederConstants.feedMotorConfig.clone();
 
     public FeederReal(){
