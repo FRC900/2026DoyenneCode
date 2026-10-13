@@ -38,7 +38,7 @@ public class ShootHubFromCamera extends Command {
     @Override
     public void end(boolean interrupted){
         flywheel.stopFlywheel();
-        turret.stop();
+        turret.setTurretPos(0);
     }
 
     @Override
