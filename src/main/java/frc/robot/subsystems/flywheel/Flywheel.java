@@ -40,9 +40,9 @@ public class Flywheel extends SubsystemBase {
 
     @Override
     public void periodic() {
-        if (loggedSpeed.hasChanged(loggedSpeed.hashCode())) {
-            io.setFlywheelRPM(loggedSpeed.getAsDouble());
-        }
+        // if (loggedSpeed.hasChanged(loggedSpeed.hashCode())) {
+        //     io.setFlywheelRPM(loggedSpeed.getAsDouble());
+        // }
     }
 
     @Override
