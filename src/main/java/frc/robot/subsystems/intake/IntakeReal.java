@@ -32,8 +32,11 @@ public class IntakeReal implements IntakeIO{
     //Extends the intake to the setpoint within the constants
     @Override
     public void extendIntake(){
+        extendMotor.set(0.3);
+    }
+
+    public void wiggleIntake(){
         extended = true;
-        extendMotor.setControl(intakePosControl.withSlot(0));
     }
 
     @Override

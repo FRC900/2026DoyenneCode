@@ -22,7 +22,7 @@ public class IntakeConstants {
     public static final TalonFXConfiguration extendConfig =  new TalonFXConfiguration()
                                                                   .withCurrentLimits(
                                                                     new CurrentLimitsConfigs()
-                                                                      .withStatorCurrentLimit(120)
+                                                                      .withStatorCurrentLimit(60)
                                                                       .withSupplyCurrentLimit(60)
                                                                       .withStatorCurrentLimitEnable(true)
                                                                       .withSupplyCurrentLimitEnable(true)

@@ -34,6 +34,6 @@ public class ExtendIntakeCommand extends Command{
 
     @Override
     public boolean isFinished(){
-        return timer.hasElapsed(1);
+        return timer.hasElapsed(0.2);
     }    
 }

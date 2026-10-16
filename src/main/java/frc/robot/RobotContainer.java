@@ -103,13 +103,15 @@ public class RobotContainer {
                 .withRotationalRate(-m_driverController.getRightX() * TunerConstants.kMaxAngularRate))
         );
 
-        m_operatorController.leftBumper().onTrue(new ExtendIntakeCommand(intake));
+        m_driverController.leftBumper().onTrue(new ExtendIntakeCommand(intake));
         
-        m_operatorController.leftTrigger().whileTrue(new RollIntakeRollersCommand(rollers));
+        m_driverController.leftTrigger().whileTrue(new RollIntakeRollersCommand(rollers));
 
-        m_operatorController.rightBumper().whileTrue(new SpinSpindexerCommand(spindexer));
+        m_driverController.rightTrigger().whileTrue(new SpinSpindexerCommand(spindexer).alongWith(new FeedFeederCommand(feeder)));
 
-        m_operatorController.a().whileTrue(CommandBuilders.createShootCommand(
+        m_driverController.rightBumper().onTrue(new GenericFlywheelCommand(flywheel,2000));
+
+        m_driverController.a().whileTrue(CommandBuilders.createShootCommand(
             new GenericFlywheelCommand(flywheel, 3000), 
             new FeedFeederCommand(feeder), 
             new SpinSpindexerCommand(spindexer), 
