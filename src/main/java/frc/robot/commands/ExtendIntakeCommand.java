@@ -17,13 +17,12 @@ public class ExtendIntakeCommand extends Command{
 
     @Override
     public void initialize(){
-        intakeSubsystem.extendIntake();
         timer.start();
+        intakeSubsystem.extendIntake();
     }
 
     @Override
     public void execute(){
-
     }
 
     @Override
