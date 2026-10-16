@@ -47,12 +47,7 @@ public class IntakeSim implements IntakeIO{
   }
 
   @Override
-  public void startWiggle(){
-    System.out.println("wiggling");
-  }
-
-  @Override
-  public void stopWiggle(){
+  public void wiggle(){
     System.out.println("wiggling");
   }
 

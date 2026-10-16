@@ -7,9 +7,7 @@ public interface IntakeIO {
 
   public void stopIntake();
 
-  public void startWiggle();
-
-  public void stopWiggle();
+  public void wiggle();
 
   public void periodic();
 

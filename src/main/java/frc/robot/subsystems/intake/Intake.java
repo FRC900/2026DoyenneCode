@@ -13,7 +13,7 @@ import frc.robot.Robot;
 public class Intake extends SubsystemBase {
  
   IntakeIO io;
-  public CANcoder intakeEncoder = new CANcoder(63);
+  public CANcoder intakeEncoder = new CANcoder(62, "mech");
   
   public Intake() {
 
@@ -30,13 +30,10 @@ public class Intake extends SubsystemBase {
     io.stopIntake();
   }
 
-  public void startWiggle(){
-    io.startWiggle();
+  public void wiggle(){
+    io.wiggle();
   }
 
-  public void stopWiggle(){
-    io.stopWiggle();
-  }
 
   @Override
   public void periodic() {

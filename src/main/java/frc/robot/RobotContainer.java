@@ -11,13 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.RollIntakeRollersCommand;
-import frc.robot.commands.ShootHubFromCamera;
-import frc.robot.commands.CommandBuilders;
-import frc.robot.commands.GenericFlywheelCommand;
-import frc.robot.commands.ExtendIntakeCommand;
-import frc.robot.commands.SpinSpindexerCommand;
-import frc.robot.commands.FeedFeederCommand;
+import frc.robot.commands.*;
 import frc.robot.subsystems.swerve.*;
 import frc.robot.subsystems.hood.*;
 import frc.robot.subsystems.rollers.*;
@@ -107,38 +101,25 @@ public class RobotContainer {
         
         m_driverController.leftTrigger().whileTrue(new RollIntakeRollersCommand(rollers));
 
-        m_driverController.rightTrigger().whileTrue(new SpinSpindexerCommand(spindexer).alongWith(new FeedFeederCommand(feeder)));
+        m_driverController.rightTrigger().whileTrue(new ShootCommand(spindexer, feeder, flywheel));
 
-        m_driverController.rightBumper().onTrue(new GenericFlywheelCommand(flywheel,2000));
+        m_driverController.rightBumper().whileTrue(new OuttakeCommand(rollers));
+    
+        m_driverController.y().onTrue(new GenericFlywheelCommand(flywheel, 2750));
 
-        m_driverController.a().whileTrue(CommandBuilders.createShootCommand(
-            new GenericFlywheelCommand(flywheel, 3000), 
-            new FeedFeederCommand(feeder), 
-            new SpinSpindexerCommand(spindexer), 
-            new Trigger(() -> flywheel.atSpeed(3))
-        ));
+        m_driverController.b().onTrue(new GenericFlywheelCommand(flywheel, 3000));
         
-        m_operatorController.b().whileTrue(CommandBuilders.createShootCommand(
-            new GenericFlywheelCommand(flywheel, 4500), 
-            new FeedFeederCommand(feeder), 
-            new SpinSpindexerCommand(spindexer), 
-            new Trigger(() -> flywheel.atSpeed(3))
-        ));
+        m_driverController.a().onTrue(new GenericFlywheelCommand(flywheel, 4500));
 
-        m_operatorController.x().whileTrue(CommandBuilders.createShootCommand(
-            new GenericFlywheelCommand(flywheel, 2750), 
-            new FeedFeederCommand(feeder), 
-            new SpinSpindexerCommand(spindexer), 
-            new Trigger(() -> flywheel.atSpeed(3))
-        ));
-
+        m_driverController.x().onTrue(new WiggleIntakeCommand(intake)); //SO JANK the sine graph is NOT accurate im sorry :{
+        /*
         m_operatorController.y().whileTrue(CommandBuilders.createShootCommand(
             new ShootHubFromCamera(flywheel, vision, turret), 
             new FeedFeederCommand(feeder), 
             new SpinSpindexerCommand(spindexer), 
             new Trigger(() -> flywheel.atSpeed(3))
         ));
-
+        */
 
     }
 

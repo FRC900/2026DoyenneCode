@@ -16,7 +16,7 @@ public class WiggleIntakeCommand extends Command{
 
     @Override
     public void initialize(){
-        intakeSubsystem.startWiggle();
+        intakeSubsystem.wiggle();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class WiggleIntakeCommand extends Command{
 
     @Override
     public void end(boolean interrupted){
-       intakeSubsystem.stopWiggle();
+       intakeSubsystem.stopIntake();
     }
 
     @Override
