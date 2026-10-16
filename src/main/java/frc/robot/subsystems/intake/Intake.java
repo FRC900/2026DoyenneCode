@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems.intake;
 
+import com.ctre.phoenix6.hardware.CANcoder;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 
@@ -11,7 +13,8 @@ import frc.robot.Robot;
 public class Intake extends SubsystemBase {
  
   IntakeIO io;
-
+  public CANcoder intakeEncoder = new CANcoder(63);
+  
   public Intake() {
 
     io = Robot.isReal() ? new IntakeReal() : new IntakeSim();
@@ -25,6 +28,14 @@ public class Intake extends SubsystemBase {
 
   public void stopIntake(){
     io.stopIntake();
+  }
+
+  public void startWiggle(){
+    io.startWiggle();
+  }
+
+  public void stopWiggle(){
+    io.stopWiggle();
   }
 
   @Override

@@ -18,7 +18,6 @@ public class ExtendIntakeCommand extends Command{
     @Override
     public void initialize(){
         intakeSubsystem.extendIntake();
-        timer.start();
     }
 
     @Override
@@ -29,11 +28,10 @@ public class ExtendIntakeCommand extends Command{
     @Override
     public void end(boolean interrupted){
        intakeSubsystem.stopIntake();
-       timer.stop();
     }
 
     @Override
     public boolean isFinished(){
-        return timer.hasElapsed(1);
+        return intakeSubsystem.intakeEncoder.getPosition().getValueAsDouble() < 0;
     }    
 }
