@@ -23,6 +23,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.subsystems.swerve.CommandSwerveDrivetrain;
 
+import org.littletonrobotics.junction.Logger;
+
+
 @SuppressWarnings("unused")
 public class Vision extends SubsystemBase{
 
@@ -135,6 +138,15 @@ public class Vision extends SubsystemBase{
         return distance - 13;
     }
 
+    public Pose2d getPose2d() {
+        Pose3d pose = getPose().isPresent() ? getPose().get() : new Pose3d(); 
+        if (pose.equals(new Pose3d())) {
+            return new Pose2d();
+        }
+        return pose.toPose2d();
+
+    }
+
     public double getDesiredHeading() {
         Pose3d pose = getPose().isPresent() ? getPose().get() : new Pose3d(); 
         if (pose.equals(new Pose3d())) {
@@ -155,5 +167,8 @@ public class Vision extends SubsystemBase{
 
     @Override
     public void periodic() {
+        Logger.recordOutput("/Vision/distance", getDistance());
+        Logger.recordOutput("/Vision/heading", getDesiredHeading());
+        Logger.recordOutput("/Vision/pose", getPose2d());
     }
 }

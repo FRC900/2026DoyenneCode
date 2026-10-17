@@ -1,4 +1,4 @@
-package frc.robot.subsystems.Turret;
+package frc.robot.subsystems.turret;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.PositionVoltage;
@@ -8,10 +8,10 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 public class TurretReal implements TurretIO{
 
-    public static final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID);
-    public static final TalonFXConfiguration turretMotorConfig = TurretConstants.turretMotorConfig.clone();
+    public final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID);
+    public final TalonFXConfiguration turretMotorConfig = TurretConstants.turretMotorConfig.clone();
 
-    public static final PositionVoltage turretPos = new PositionVoltage(0).withSlot(0);    
+    public final PositionVoltage turretPos = new PositionVoltage(0).withSlot(0);    
 
     public TurretReal(){
         
