@@ -23,12 +23,20 @@ public class ShootCommand extends Command{
 
     @Override
     public void initialize(){
-
+        hoodSubsystem.setHoodAngle(ShootCommandConstants.hoodAngle);
+        spindexerSubsystem.spinSpindexer(ShootCommandConstants.spindexerSpeed);
+        feederSubsystem.feedFeeder(ShootCommandConstants.feederSpeed);
+        flywheelSubsystem.setFlywheelSpeed(ShootCommandConstants.flywheelSpeed);
     }
 
     @Override
     public void execute(){
-        
+
+        /*
+         * TODO:
+         * Something something, shoot on the move, Something something
+         */
+
     }
 
     @Override

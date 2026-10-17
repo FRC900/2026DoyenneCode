@@ -4,10 +4,12 @@
 
 package frc.robot;
 
-import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
-import com.ctre.phoenix6.configs.MotorOutputConfigs;
-import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.signals.NeutralModeValue;
+import com.pathplanner.lib.util.FlippingUtil;
+
+import edu.wpi.first.math.util.Units;
+
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -18,49 +20,24 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-      public static final TalonFXConfiguration commonConfig = new TalonFXConfiguration()
-                                                                  .withCurrentLimits(
-                                                                    new CurrentLimitsConfigs()
-                                                                      .withStatorCurrentLimit(120)
-                                                                      .withSupplyCurrentLimit(60)
-                                                                      .withStatorCurrentLimitEnable(true)
-                                                                      .withSupplyCurrentLimitEnable(true)
-                                                                  )
-                                                                  .withMotorOutput(
-                                                                    new MotorOutputConfigs().withNeutralMode(NeutralModeValue.Brake)
-                                                                  );
-
 
   public static class OperatorConstants {
 
     public static final int kDriverControllerPort = 0;
+    public static final int kOperatorControllerPort = 1;
     
   }
 
-  public static class IntakeConstants {
-
-
-
+  public static class ShootCommandConstants {
+    public static final double flywheelSpeed = 0;
+    public static final double feederSpeed = 0;
+    public static final double spindexerSpeed = 0;
+    public static final double hoodAngle = 0;
   }
 
-  public static class SpindexerConstants {
-
-    public static final int spinMotorID = 2;
-
-    public static final TalonFXConfiguration spinMotorConfig = commonConfig.clone();
-
+  public static class VisionConstants {
+    public static final Pose2d hubPos = new Pose2d(Units.inchesToMeters(182.11), Units.inchesToMeters(158.84), new Rotation2d());
+    public static final Pose2d redHubPos = FlippingUtil.flipFieldPose(hubPos);    
   }
 
-  public static class TurretConstants {
-
-    public static final int turretMotorID = 4;
-    public static final double turret_kP = 0;
-    public static final double turret_kI = 0;
-    public static final double turret_kD = 0;
-    //22:1
-    public static final double turretGearRatio = 22;
-
-    public static final TalonFXConfiguration turretMotorConfig = commonConfig.clone();
-
-  }
 }
