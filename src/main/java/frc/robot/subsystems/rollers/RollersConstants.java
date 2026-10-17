@@ -6,7 +6,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 public class RollersConstants {
-    public static final int rollerID = 0;
+    public static final int rollerID = 60;
 
     public static final TalonFXConfiguration rollerConfig = new TalonFXConfiguration()
                                                                   .withCurrentLimits(

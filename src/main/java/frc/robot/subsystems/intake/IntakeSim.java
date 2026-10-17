@@ -47,6 +47,11 @@ public class IntakeSim implements IntakeIO{
   }
 
   @Override
+  public void wiggle(){
+    System.out.println("wiggling");
+  }
+
+  @Override
   public void periodic(){
     intakeSim.setInputVoltage(intakeInputVoltage);
     intakeSim.update(0.01);

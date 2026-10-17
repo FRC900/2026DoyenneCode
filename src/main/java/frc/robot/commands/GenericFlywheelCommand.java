@@ -18,7 +18,7 @@ public class GenericFlywheelCommand extends Command{
 
     @Override
     public void initialize(){
-        flywheelSubsystem.setFlywheelRPM(speed);
+        flywheelSubsystem.setFlywheelRPM(-speed);
     }
 
     @Override
